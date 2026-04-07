@@ -1,59 +1,31 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.LinkedList;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App ===");
+        System.out.println("=== UC4: Ordered Train Consist using LinkedList ===");
 
-        // UC1: Initialize train consist
-        List<String> trainConsist = new ArrayList<>();
-        System.out.println("Train consist initialized.");
-        System.out.println("Initial number of bogies: " + trainConsist.size());
+        // Create LinkedList
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        // UC2: Passenger bogie operations
-        System.out.println("\nAdding passenger bogies...");
-
+        // Add bogies
+        trainConsist.add("Engine");
         trainConsist.add("Sleeper");
-        trainConsist.add("AC Chair");
-        trainConsist.add("First Class");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        System.out.println("Bogies after addition: " + trainConsist);
+        System.out.println("Initial train consist: " + trainConsist);
 
-        System.out.println("\nRemoving 'AC Chair' bogie...");
-        trainConsist.remove("AC Chair");
+        // Insert Pantry Car at position 2
+        trainConsist.add(2, "Pantry Car");
+        System.out.println("After adding Pantry Car at position 2: " + trainConsist);
 
-        System.out.println("Bogies after removal: " + trainConsist);
+        // Remove first and last bogie
+        trainConsist.removeFirst();
+        trainConsist.removeLast();
 
-        System.out.println("\nChecking if 'Sleeper' exists...");
-        if (trainConsist.contains("Sleeper")) {
-            System.out.println("Sleeper bogie is present.");
-        }
-
-        System.out.println("\nFinal train consist: " + trainConsist);
-
-        // =========================
-        // UC3: Unique Bogie IDs using HashSet
-        // =========================
-        System.out.println("\nTracking unique Bogie IDs...");
-
-        // Create HashSet
-        Set<String> bogieIds = new HashSet<>();
-
-        // Add bogie IDs (with duplicates)
-        bogieIds.add("BG101");
-        bogieIds.add("BG102");
-        bogieIds.add("BG103");
-        bogieIds.add("BG101"); // duplicate
-        bogieIds.add("BG102"); // duplicate
-
-        // Display unique IDs
-        System.out.println("Bogie IDs (duplicates removed automatically): " + bogieIds);
-
-        System.out.println("\nSystem ready for next operations.");
+        System.out.println("Final train consist after removals: " + trainConsist);
     }
 }
-
